@@ -52,39 +52,23 @@
 					}
 				},
 				"Events": {
-					"RootGet": {
-						"Type": "Api",
-						"Properties": {
-							"Path": "/entity1",
-							"Method": "GET"
+						"GetAll": {
+							"Type": "Api",
+							"Properties": 
+								{
+									"Path": "/entity1",
+									"Method": "GET"
+								}
+						},
+						"GetById": {
+							"Type": "Api",
+							"Properties": 
+								{
+									"Path": "/entity1/{id}",
+									"Method": "GET"
+								}
 						}
 					}
-				}
-			}
-		},
-		"GetEntity1ByIdHttpFunction" : {
-			"Type" : "AWS::Serverless::Function",
-			"Properties": {
-				"Handler": "MyLambdaDotNetCoreProject.Api::MyLambdaDotNetCoreProject.Api.Entity1Lambda::GetById",
-				"Runtime": "dotnetcore2.1",
-				"MemorySize": 256,
-				"Timeout": 30,
-				"Role": null,
-				"Policies": [ "AWSLambdaBasicExecutionRole" ],
-				"Environment" : {
-					"Variables" : {
-						"environmentName" : { "Ref" : "environmentName" }
-					}
-				},
-				"Events": {
-					"RootGet": {
-						"Type": "Api",
-						"Properties": {
-							"Path": "/entity1/{id}",
-							"Method": "GET"
-						}
-					}
-				}
 			}
 		}
 	},

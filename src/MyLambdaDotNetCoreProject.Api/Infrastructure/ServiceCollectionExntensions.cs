@@ -6,8 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using MyLambdaDotNetCoreProject.Application.Commands;
 using MyLambdaDotNetCoreProject.Application.Queries;
 using MyLambdaDotNetCoreProject.Domain.Aggregates.Entity1Aggregate;
+using MyLambdaDotNetCoreProject.Domain.Seedwork;
+using MyLambdaDotNetCoreProject.Infrastructure.Ef;
 using MyLambdaDotNetCoreProject.Infrastructure.Queries;
 using MyLambdaDotNetCoreProject.Infrastructure.Repositories;
+using MyLambdaDotNetCoreProject.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -32,7 +35,8 @@ namespace MyLambdaDotNetCoreProject.Api.Infrastructure
 
             => services
                 .AddMediatR(applicationAssembly)
-                .AddAutoMapper(apiAssembly);
+                .AddAutoMapper(apiAssembly)
+                ;
 
         /// <summary>
         /// dbcontexts
@@ -48,9 +52,9 @@ namespace MyLambdaDotNetCoreProject.Api.Infrastructure
                 //    options => options.UseNpgsql(configuration.GetConnectionString("PostgreSqlConnectionString"))
                 //)
                 //Mysql
-                //.AddDbContext<MysqlDbContext>(
-                //    options => options.UseMySql(configuration.GetConnectionString("MysqlConnectionString"))
-                //)
+                .AddDbContext<MyProjectDbContext>(
+                    options => options.UseMySql(configuration.GetConnectionString("MysqlConnectionString"))
+                )
                 ;
 
         /// <summary>
@@ -58,19 +62,14 @@ namespace MyLambdaDotNetCoreProject.Api.Infrastructure
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        public static IServiceCollection AddServices(this IServiceCollection services)
         
             => services
-                .AddScoped<IEntity1Repository, Entity1Repository>();
-        
-        /// <summary>
-        /// application queries
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddQueries(this IServiceCollection services)
-        
-            => services
+                /*domain repositories*/
+                .AddScoped<IEntity1Repository, Entity1Repository>()
+                /*domain services*/
+                .AddScoped<IUnitOfWork, UnitOfWork>()
+                /*application queries*/
                 .AddScoped<IEntity1Query, Entity1Query>();
     }
 }

@@ -10,7 +10,7 @@ namespace MyLambdaDotNetCoreProject.Tests
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new Api.Infrastructure.Automapper.CommandToRead.Entity1Profile());
+                cfg.AddProfile(new Api.Infrastructure.Automapper.DomainModelToReadModel.Entity1Profile());
             });
 
             config.AssertConfigurationIsValid();

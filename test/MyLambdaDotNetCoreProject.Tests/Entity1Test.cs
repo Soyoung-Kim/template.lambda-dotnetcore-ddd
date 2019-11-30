@@ -22,9 +22,9 @@ namespace MyLambdaDotNetCoreProject.Tests
             // Invoke the lambda function and confirm the string was upper cased.
             var context = new TestLambdaContext();
             var response = await new Entity1Lambda().Get(new APIGatewayProxyRequest(), context);
-            var entities = JsonConvert.DeserializeObject<IEnumerable<Entity1View>>(response.Body);
+            var entities = response.DeserializeBody<IEnumerable<Entity1View>>();
 
-            Assert.NotEmpty(entities);
+            Assert.True(entities?.Any());
         }
         [Fact]
         public async Task TestCreateEntity()

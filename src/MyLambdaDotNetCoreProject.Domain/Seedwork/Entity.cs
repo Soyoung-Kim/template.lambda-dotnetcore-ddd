@@ -26,6 +26,7 @@ namespace MyLambdaDotNetCoreProject.Domain.Seedwork
         public void AddDomainEvent(INotification eventItem) => _domainEvents.Add(eventItem);
 
         public void RemoveDomainEvent(INotification eventItem) => _domainEvents.Remove(eventItem);
+        public void ClearDomainEvents() => this._domainEvents.Clear();
 
         public override int GetHashCode() => Id.GetHashCode();
 

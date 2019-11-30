@@ -21,8 +21,20 @@ namespace MyLambdaDotNetCoreProject.Infrastructure.Queries
             this._mapper = mapper;
         }
 
-        async Task<IEnumerable<Entity1View>> IEntity1Query.GetAll() => this._mapper.Map<IEnumerable<Entity1>,IEnumerable<Entity1View>>(await this._entity1Repository.RetrieveAsync());
+        async Task<IEnumerable<Entity1View>> IEntity1Query.GetAllAsync()
+        {
+            IEnumerable<Entity1> entities = await this._entity1Repository.GetAllAsync();
 
-        async Task<Entity1View> IEntity1Query.GetOne(string id) => this._mapper.Map<Entity1View>(await this._entity1Repository.RetrieveAsync(id));
+            return this._mapper.Map<IEnumerable<Entity1View>>(entities);
+        }
+            
+            
+
+        async Task<Entity1View> IEntity1Query.GetAsync(string id)
+        {
+            Entity1 entity = await this._entity1Repository.GetAsync(id);
+
+            return this._mapper.Map<Entity1View>(entity);
+        }
     }
 }

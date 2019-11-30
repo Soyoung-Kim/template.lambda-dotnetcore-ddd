@@ -1,5 +1,4 @@
 ﻿using MyLambdaDotNetCoreProject.Application.Queries.Readmodel;
-using MyLambdaDotNetCoreProject.Domain.Aggregates.Entity1Aggregate;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +8,7 @@ namespace MyLambdaDotNetCoreProject.Application.Queries
 {
     public interface IEntity1Query: IQuery
     {
-        Task<IEnumerable<Entity1View>> GetAll();
-        Task<Entity1View> GetOne(string id);
+        Task<IEnumerable<Entity1View>> GetAllAsync();
+        Task<Entity1View> GetAsync(string id);
     }
 }

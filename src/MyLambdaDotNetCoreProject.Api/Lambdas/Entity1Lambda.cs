@@ -59,21 +59,21 @@ namespace MyLambdaDotNetCoreProject.Api
         [LambdaSerializer(typeof(JsonSerializer))]
         public async Task<APIGatewayProxyResponse> Get(APIGatewayProxyRequest request, ILambdaContext lambdaContext)
         {
-            IEnumerable<Entity1View> result = await this._entity1Query.GetAll().ConfigureAwait(false);
+            object result;
+
+            if (request.PathParameters.ContainsKey("id"))
+            {
+                string id = request.PathParameters["id"];
+
+                result = await this._entity1Query.GetAsync(id).ConfigureAwait(false);
+            }
+            else
+            {
+                result = await this._entity1Query.GetAllAsync().ConfigureAwait(false);
+            }
 
             return result is null ?
                 new APIGatewayProxyResponse().SetNotfound()
-                : new APIGatewayProxyResponse().SetSuccess(result);
-        }
-
-        [LambdaSerializer(typeof(JsonSerializer))]
-        public async Task<APIGatewayProxyResponse> GetById(APIGatewayProxyRequest request, ILambdaContext lambdaContext)
-        {
-            string id = request.PathParameters["id"];
-            Entity1View result = await this._entity1Query.GetOne(id).ConfigureAwait(false);
-
-            return result is null ?
-              new APIGatewayProxyResponse().SetNotfound()
                 : new APIGatewayProxyResponse().SetSuccess(result);
         }
     }

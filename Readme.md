@@ -6,9 +6,9 @@ Hosting project (asp .net) is not used since lambda ApiProxyGate can cover api e
 
 ## Keywords
 
-* .Net Core Project
+* .Net Core
 * aws Lambda
-* SAM (Serverless Application Model)
+* aws SAM (Serverless Application Model)
 * DDD (Domain Driven Design)
 * CQRS (Command Query Responsibility Segregation)
 

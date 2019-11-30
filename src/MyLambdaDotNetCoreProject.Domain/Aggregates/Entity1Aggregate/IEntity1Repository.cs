@@ -8,9 +8,10 @@ namespace MyLambdaDotNetCoreProject.Domain.Aggregates.Entity1Aggregate
 {
     public interface IEntity1Repository: IRepository<Entity1>
     {
-        void Create(Entity1 item);
+        void Add(Entity1 item);
         void Update(Entity1 item);
-        Task<IEnumerable<Entity1>> RetrieveAsync();
-        Task<Entity1> RetrieveAsync(string id);
+        void Remove(Entity1 item);
+        Task<IEnumerable<Entity1>> GetAllAsync();
+        Task<Entity1> GetAsync(string id);
     }
 }

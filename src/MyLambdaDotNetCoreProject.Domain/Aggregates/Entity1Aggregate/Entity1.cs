@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyLambdaDotNetCoreProject.Domain.Aggregates.Entity1Aggregate
 {
-    public class Entity1: IAggregateRoot
+    public class Entity1: Entity, IAggregateRoot
     {
         public Entity1(string name)
         {
@@ -18,7 +18,6 @@ namespace MyLambdaDotNetCoreProject.Domain.Aggregates.Entity1Aggregate
             Name = name;
         }
 
-        public string Id { get; private set; } 
         public string Name { get; private set; }
     }
 }

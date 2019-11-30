@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLambdaDotNetCoreProject.Api", "src\MyLambdaDotNetCoreProject.Api\MyLambdaDotNetCoreProject.Api.csproj", "{5B3ACD07-A7E7-4154-9117-7757CA16EEF5}"
 EndProject
@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLambdaDotNetCoreProject.I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6B217968-4A53-47F9-83FF-473628ADD6A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLambdaDotNetCoreProject.Tests", "test\MyLambdaDotNetCoreProject.Tests\MyLambdaDotNetCoreProject.Tests.csproj", "{92ECBDFC-A19E-4DA4-9E19-F6C1DBAAAC85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLambdaDotNetCoreProject.Tests", "test\MyLambdaDotNetCoreProject.Tests\MyLambdaDotNetCoreProject.Tests.csproj", "{92ECBDFC-A19E-4DA4-9E19-F6C1DBAAAC85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{43238638-B985-4DD2-B1D9-770542128D98}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
